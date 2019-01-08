@@ -1,5 +1,5 @@
 ##### python 基础程序设计详解，附代码示例介绍
-> python 是脚本语言，编译执行。与此不同的是C/C++直接翻译成目标代码，一次性翻译，这种属于静态编译语言
+> python 是脚本语言，解释执行。与此不同的是C/C++直接翻译成目标代码，一次性编译，这种属于静态编译语言
 ***
 #### 程序的基本编写方法
 **IPO**
@@ -106,32 +106,19 @@ turtle.colormode(mode)
 ***
 库引用
 
-扩充python程序功能的方式
-
-使用import保留字完成
-
+扩充python程序功能的方式,使用import保留字完成
 
 import<库名>
 
-<库名>.<函数名>(<函数参数>)
+from 库名 import 函数名
 
-
-import 更多用法
-
-使用from 和 import保留字共同完成
-
-from<库名>import<函数名>
-
-from<库名>import*
-
-<函数名>(<函数参数>)
+from 库名 import*
 
 
 ** 也可以使用import和as保留字共同完成
 
-import<库名>as<库别名>
+import 库名 as 库别名 
 
-<库别名>.<库函数>(<函数参数>) **
 ***
 turtle画笔控制函数
 画笔控制后一直有效
