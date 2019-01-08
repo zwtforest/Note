@@ -197,7 +197,7 @@ range(M,N)
 range（2，5）
 
 ***
-####基本数据类型
+##### 基本数据类型
 
 * 整数类型
 
@@ -208,7 +208,7 @@ range（2，5）
 > 浮点数运算存在不确定尾数，不是bug
 > ** round(x,d): 对x四舍五入，d是小数截取位数 **
 
-#####浮点数间运算及比较round()函数辅助
+##### 浮点数间运算及比较round()函数辅助
 
 * 数值运算操作符
 
@@ -407,7 +407,7 @@ time.sleep(s)  休眠时间函数
 * 条件判断及组合
 * 程序的异常处理
 
-#####单分支结构
+##### 单分支结构
 
     if  条件：
         执行
@@ -664,7 +664,7 @@ random.choice([1,23,4,5,6,7,8,9])
 蒙特卡罗思想的运用等
 
 ***
-#####函数
+##### 函数
 
 def 函数名(参数)：
 
@@ -915,7 +915,7 @@ pyinstaller -i a.ico -F drawDigit2.py
 * 实例10：文本词频统计
 
 
-#####集合类型的定义
+##### 集合类型的定义
 
 集合类型不能存在可变数据类型的元素
 集合中不含有重复的元素
@@ -933,7 +933,7 @@ pyinstaller -i a.ico -F drawDigit2.py
  会自动提出重复的元素,且并不一定按照原来的顺序排列，因为集合中本来就是没有顺序的
 
 
-#####集合操作符
+##### 集合操作符
 
 S|T  并
 S-T  减
@@ -1032,7 +1032,7 @@ ls[::1]
 * 可以使用或者不使用小括号
 
 
-######元组继承了序列类型的全部通用操作
+###### 元组继承了序列类型的全部通用操作
 
 
 ***
@@ -1379,7 +1379,7 @@ background_color
 #### 文件的使用
 
 
-#####文件的类型
+##### 文件的类型
 * 文件是存储再辅助存储器上的数据序列
 
 * 文件是数据存储的一种形式
@@ -1460,7 +1460,7 @@ background_color
     turtle.fd(150)
     turtle.done()
 
-#####TextProBar2.py
+##### TextProBar2.py
 
     import time
     scale = 50
@@ -1578,7 +1578,7 @@ import time
         turtle.fd(40)
         turtle.right(90)
 
-#####根据数字绘制七段数码管
+##### 根据数字绘制七段数码管
 
     def drawDigit(digit):
 
@@ -1594,7 +1594,7 @@ import time
         turtle.penup() #为绘制后续数字确定位置
         turtle.fd(20) #为绘制后续数字确定位置
 
-#####获得要输出的数字
+##### 获得要输出的数字
 
     def drawDate(date): 
 
@@ -1613,7 +1613,7 @@ import time
     main()
 
 
-#####获得要输出的数字
+##### 获得要输出的数字
 
     def drawDate(date): 
         turtle.pencolor("red")
@@ -1655,7 +1655,7 @@ import time
         dayfactor += 0.001
     print("工作日努力的参数为：{:.3f}".format(dayfactor))
 
-#####CalThreeKingdomsV1.py
+##### CalThreeKingdomsV1.py
 
     import jieba
 
@@ -1673,7 +1673,7 @@ import time
         word,count = items[i]
         print("{0:<10}{1:>5}".format(word,count))
 
-#####Calpiv2.py
+##### Calpiv2.py
     from random import random
     from time import perf_counter
     DARTS = 1000*1000*10
@@ -1689,7 +1689,7 @@ import time
     print("圆周率值为：{}".format(pi)) 
     print("运行时间是：{:.2f}".format(perf_counter()-start))
 
-#####CalHamletV1.py
+##### CalHamletV1.py
     def getText():
         txt = open("123.txt","r").read()
         txt = txt.lower()
@@ -1708,7 +1708,7 @@ import time
         word,count = items[i]
         print("{0:<10}{1:>5}".format(word,count))
 
-#####CalBMIv3.py
+##### CalBMIv3.py
 
     height,weight = eval(input("请输入身高（米）和体重（公斤）[逗号隔开]: "))
     bmi = weight/pow(height,2)
