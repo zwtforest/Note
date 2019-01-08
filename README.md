@@ -1,4 +1,4 @@
-##### python 基础程序设计 笔记 ，内附代码。
+##### python 基础程序设计详解，附代码示例介绍
 > python 是脚本语言，编译执行。与此不同的是C/C++直接翻译成目标代码，一次性翻译，这种属于静态编译语言
 ***
 #### 程序的基本编写方法
@@ -187,16 +187,13 @@ print(中间加，号的使用)
     for i in range(5)
         print("hello",i)
 
-*** range ***   
+##### range函数   
 
-range(N)
-
+>range(N)
 产生0到n-1个整数序列
-
 range的第二个使用方法是
 range(M,N)
 产生M到N-1的整数序列，共N-M个
-
 range（2，5）
 
 ***
@@ -211,7 +208,7 @@ range（2，5）
 > 浮点数运算存在不确定尾数，不是bug
 > ** round(x,d): 对x四舍五入，d是小数截取位数 **
 
-*** 浮点数间运算及比较round()函数辅助***
+#####浮点数间运算及比较round()函数辅助
 
 * 数值运算操作符
 
@@ -410,7 +407,7 @@ time.sleep(s)  休眠时间函数
 * 条件判断及组合
 * 程序的异常处理
 
-** 单分支结构 **
+#####单分支结构
 
     if  条件：
         执行
@@ -1427,12 +1424,314 @@ background_color
 * 二维数据的处理：for循环+.split()和.join()
 
 
+#### 附：代码示例部分
+
+###### TempConvert.py
+    # 温度转换
+    # C=（F-32）/1.8
+    # F= C*1.8+32
+    TempStr = input("请输入带有符号的温度值：")
+    if TempStr[-1] in ['F','f']:
+        C = (eval(TempStr[0:-1]) - 32)/1.8
+        print(" 转换后的温度是{:.2f}C ".format(C))
+    elif TempStr[-1] in ['C','c']:
+        F = 1.8*eval(TempStr[0:-1])+32
+        print("转换后的温度是{:.2f}F".format(F))
+    else: 
+        print("输入格式错误")
+    # 变量
+    # 大小写敏感，首字母不能是数字，不能与保留字相同
+    # 数据类型 
+    # 
+
+##### weekName.py
+
+    weekStr = "一二三四五六日"
+    weekId = eval(input("请输入星期数字(1-7):"))
+    print("星期" + weekStr[weekId-1])
+
+##### turtle()库的使用
+    import turtle
+    turtle.left(45)
+    turtle.fd(135)
+    turtle.right(135)
+    turtle.fd(300)
+    turtle.left(135)
+    turtle.fd(150)
+    turtle.done()
+
+#####TextProBar2.py
+
+    import time
+    scale = 50
+    print("正在执行")
+    start = time.perf_counter()
+    for i in range(scale + 1):
+        a = '=' * i
+        b = '-' * (scale-i)
+        c = (i/scale)*100
+        dur = time.perf_counter() - start
+        print("\r[{}{}]\t{:^3.0f}%\t耗时{:.2f}s".format(a, b, c, dur), end="")
+        time.sleep(0.1)
+    print("\n\n"+"执行结束")
+
+##### TextProBarV1.py
+
+    import time
+    for i in range(101):
+        print("\rDownloading{:=>10}%".format(i),end="")
+        time.sleep(0.1)
+
+##### python3.0 温度转换
+##### C=（F-32）/1.8
+##### F= C*1.8+32
+
+    TempStr = input("请输入带符号的温度值：")
+    if TempStr[-1] in ['F','f']:
+        C=(eval(TempStr[0:-1])-32)/1.8
+        print('转换后的摄氏温度为{:.2f}'.format(C))
+    elif TempStr[-1] in ['C','c']:
+        F=eval(TempStr[0:-1])*1.8+32
+        print('转换后的华氏温度为{:.2f}'.format(F))
+    else:
+        print("输入格式错误")
+
+
+
+##### PythonDraw.py
+
+    import turtle
+    turtle.setup(650, 350, 200, 200)
+    # turtle.setuo(窗口的宽度width，窗口的高度height，起始点startx,起始点starty)
+    turtle.penup()
+    turtle.fd(-250)
+    turtle.pendown()
+    turtle.pensize(25)
+    turtle.pencolor('purple')
+    turtle.seth(-40)
+    for i in range(4):
+        turtle.circle(40, 80)
+        turtle.circle(-40, 80)
+    turtle.circle(40, 80/2)
+    turtle.fd(40)
+    turtle.circle(16, 180)
+    turtle.fd(40)
+    turtle.circle(16, 180)
+    turtle.fd(40*2/3)
+    turtle.done()
+
+##### 文本形式(ASCII)打开文件
+
+    tf = open("f.txt","rb")
+    print(tf.readline())
+    tf.close()
+
+
+##### 二进制形式打开文件
+
+    tf = open("f.txt", "rb")
+    print(tf.readline())
+    tf.close()
+
+import turtle
+import time
+
+
+#####绘制数码管间隔
+
+    def drawGap():
+        turtle.penup()
+        turtle.fd(5)
+
+##### 绘制单段数码管
+
+    def drawLine(draw): #绘制单段数码管
+
+        turtle.pendown() if draw else turtle.penup()
+        turtle.fd(40)
+        drawGap()
+        turtle.right(90)
+
+##### 根据数字绘制七段数码管
+
+    def drawDigit(digit):
+
+        drawLine(True) if digit in [2,3,4,5,6,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,1,3,4,5,6,7,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,2,3,4,5,6,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,2,6,8] else drawLine(False)
+        turtle.left(90)
+        drawLine(True) if digit in [0,4,5,6,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,2,3,5,6,7,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,1,2,3,4,7,8,9] else drawLine(False)
+        turtle.left(180)
+        turtle.penup() #为绘制后续数字确定位置
+        turtle.fd(20) #为绘制后续数字确定位置
+
+    import turtle
+
+##### 绘制单段数码管
+
+    def drawLine(draw): #绘制单段数码管
+
+        turtle.pendown() if draw else turtle.penup()
+        turtle.fd(40)
+        turtle.right(90)
+
+#####根据数字绘制七段数码管
+
+    def drawDigit(digit):
+
+        drawLine(True) if digit in [2,3,4,5,6,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,1,3,4,5,6,7,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,2,3,4,5,6,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,2,6,8] else drawLine(False)
+        turtle.left(90)
+        drawLine(True) if digit in [0,4,5,6,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,2,3,5,6,7,8,9] else drawLine(False)
+        drawLine(True) if digit in [0,1,2,3,4,7,8,9] else drawLine(False)
+        turtle.left(180)
+        turtle.penup() #为绘制后续数字确定位置
+        turtle.fd(20) #为绘制后续数字确定位置
+
+#####获得要输出的数字
+
+    def drawDate(date): 
+
+        for i in date:
+            drawDigit(eval(i)) #通过eval()函数将数字变为整数
+
+    def main():
+        turtle.setup(800,350,200,200)
+        turtle.penup()
+        turtle.fd(-300)
+        turtle.pensize(5)
+        drawDate('20181010')
+        turtle.hideturtle()
+        turtle.done()
+
+    main()
+
+
+#####获得要输出的数字
+
+    def drawDate(date): 
+        turtle.pencolor("red")
+        for i in date:
+            if i == '-':
+                turtle.write('年',font=("Arial",18,"normal"))
+                turtle.pencolor("green")
+                turtle.fd(40)
+            elif i == '=':
+                turtle.write('月',font=("Arial", 18, "normal"))
+                turtle.pencolor("blue")
+                turtle.fd(40)
+            elif i == '+':
+                turtle.write('日',font=("Arial", 18, "normal"))
+            else:
+                drawDigit(eval(i))
+    def main():
+        turtle.setup(800,350,200,200)
+        turtle.penup()
+        turtle.fd(-300)
+        turtle.pensize(5)
+        drawDate(time.strftime('%Y-%m=%d+',time.gmtime()))
+        turtle.hideturtle()
+        turtle.done()
+
+    main()
+
+##### Dayup.py
+    def dayUP(df):
+        dayup = 1
+        for i in range(365):
+            if i % 7 in [6,0]:
+                dayup = dayup*(1-0.01)
+            else:
+                dayup = dayup*(1 + df)
+        return dayup
+    dayfactor = 0.01
+    while dayUP(dayfactor) < 37.78:
+        dayfactor += 0.001
+    print("工作日努力的参数为：{:.3f}".format(dayfactor))
+
+#####CalThreeKingdomsV1.py
+
+    import jieba
+
+    txt = open('threekingdoms.txt',"r", encoding = "utf-8").read()
+    words = jieba.lcut(txt)
+    counts = {}
+    for word in words:
+        if len(word)==1:
+            continue
+        else:
+            counts[word] = counts.get(word,0)+1
+    items = list(counts.items())
+    items.sort(key=lambda x:x[1],reverse = True)
+    for i in range(15):
+        word,count = items[i]
+        print("{0:<10}{1:>5}".format(word,count))
+
+#####Calpiv2.py
+    from random import random
+    from time import perf_counter
+    DARTS = 1000*1000*10
+    hits = 0.0
+    start = perf_counter()
+
+    for i in range(1,DARTS+1):
+        x,y = random(),random()
+        dist = pow(x**2 + y**2, 0.5)
+        if dist <= 1.0:
+            hits = hits +1
+    pi = 4 * (hits/DARTS)
+    print("圆周率值为：{}".format(pi)) 
+    print("运行时间是：{:.2f}".format(perf_counter()-start))
+
+#####CalHamletV1.py
+    def getText():
+        txt = open("123.txt","r").read()
+        txt = txt.lower()
+        for ch in '!#@%$,./?……' :
+            txt = txt.replace(ch," ")
+        return txt
+
+    hamletTxt = getText()
+    words = hamletTxt.split()
+    counts = {}
+    for word in words:
+        counts[word] = counts.get(word,0)+1
+    items = list(counts.items())
+    items.sort(key=lambda x:x[1],reverse = True)
+    for i in range(10):
+        word,count = items[i]
+        print("{0:<10}{1:>5}".format(word,count))
+
+#####CalBMIv3.py
+
+    height,weight = eval(input("请输入身高（米）和体重（公斤）[逗号隔开]: "))
+    bmi = weight/pow(height,2)
+    print("身高：{:.2f} 体重：{:.2f} BMI 数值为:{:.2f}".format(height, weight,bmi))
+    who,nat = "",""
+    if bmi < 18.5:
+        who,nat = "偏瘦","偏瘦"
+    elif 18.5 <= bmi < 24:
+        who,nat = "正常","正常"
+    elif 24 <= bmi <25:
+        who,nat = "正常","正常"
+    elif 25 <= bmi < 28:
+        who,nat = "偏胖","偏胖"
+    elif 28 <= bmi <30:
+        who,nat = "偏胖","肥胖"
+    else:
+        who,nat = "肥胖","肥胖"
+    print("BMI指数为： 国际'{}',国内'{}' ".format(who,nat))
 
 
 
 
-
-
+python第三方库安装各版本常用网站
 www.lfd.uci.edu/~gohlke/pythonlibs/
 
 
