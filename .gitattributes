@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
-* text= python
+
+
+*.md linguist-language=python
